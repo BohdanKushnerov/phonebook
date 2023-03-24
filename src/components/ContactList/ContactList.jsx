@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 
-export const ContactList = props => {
-  return props.contacts ? (
+export const ContactList = ({ contacts, visibleContacts }) => {
+  return contacts ? (
     <ul>
-      {props.visibleContacts.map(({ name, number }) => {
+      {visibleContacts.map(({ name, number }) => {
         return (
           <li key={nanoid()}>
             {name}: {number}
@@ -14,4 +15,9 @@ export const ContactList = props => {
   ) : (
     <></>
   );
+};
+
+ContactList.propTypes = {
+  contacts: PropTypes.number.isRequired,
+  visibleContacts: PropTypes.array.isRequired,
 };
