@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 class ContactForm extends Component {
   static propTypes = {
     addContact: PropTypes.func.isRequired,
+    contacts: PropTypes.array.isRequired,
   };
 
   state = {
@@ -14,7 +15,13 @@ class ContactForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    this.props.addContact(this.state);
+    const isIncludes = this.props.contacts.find(
+      contact => contact.name.toLowerCase() === this.state.name.toLowerCase()
+    );
+
+    isIncludes
+      ? alert(`${this.state.name} is already in contacts`)
+      : this.props.addContact(this.state);
 
     this.reset();
   };

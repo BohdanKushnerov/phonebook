@@ -20,6 +20,12 @@ export class App extends Component {
   //   filter: '',
   // };
 
+  deleteContact = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
+  };
+
   addContact = obj => {
     this.setState(prevState => ({
       contacts: [
@@ -52,13 +58,14 @@ export class App extends Component {
     return (
       <div>
         <h1>Phonebook</h1>
-        <ContactForm addContact={this.addContact} />
+        <ContactForm addContact={this.addContact} contacts={contacts} />
 
         <h2>Contacts</h2>
         <Filter value={filter} handleChangeFilter={this.handleChangeFilter} />
         <ContactList
           contacts={contacts.length}
           visibleContacts={visibleContacts}
+          deleteContact={this.deleteContact}
         />
       </div>
     );
