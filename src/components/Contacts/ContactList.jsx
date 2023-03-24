@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Contact } from './Contact/Contact';
 import { nanoid } from 'nanoid';
 
 export const ContactList = ({ contacts, visibleContacts }) => {
@@ -7,7 +8,7 @@ export const ContactList = ({ contacts, visibleContacts }) => {
       {visibleContacts.map(({ name, number }) => {
         return (
           <li key={nanoid()}>
-            {name}: {number}
+            <Contact name={name} number={number} />
           </li>
         );
       })}
