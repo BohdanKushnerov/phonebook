@@ -1,12 +1,11 @@
 import PropTypes from 'prop-types';
+import { Content } from './Contact.styled';
 
 export const Contact = ({ name, number }) => {
   return (
-    <div>
-      <p>
-        {name}: {number}
-      </p>
-    </div>
+    <Content>
+      {name}: {number}
+    </Content>
   );
 };
 
