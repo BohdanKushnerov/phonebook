@@ -22,6 +22,12 @@ export const ContactList = ({ contacts, visibleContacts, deleteContact }) => {
 
 ContactList.propTypes = {
   contacts: PropTypes.number.isRequired,
-  visibleContacts: PropTypes.array.isRequired,
+  visibleContacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
   deleteContact: PropTypes.func.isRequired,
 };
