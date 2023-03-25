@@ -40,6 +40,7 @@ export class App extends Component {
   };
 
   handleChangeFilter = e => {
+    // console.log(this.state);
     this.setState({ filter: e.currentTarget.value });
   };
 
@@ -55,14 +56,14 @@ export class App extends Component {
   render() {
     const { contacts, filter } = this.state;
     const visibleContacts = this.getVisibleContacts();
-
+    console.log(filter);
     return (
       <Container>
         <h1>Phonebook</h1>
         <ContactForm addContact={this.addContact} contacts={contacts} />
 
         <h2>Contacts</h2>
-        <Filter value={filter} handleChangeFilter={this.handleChangeFilter} />
+        <Filter filter={filter} handleChangeFilter={this.handleChangeFilter} />
         <ContactList
           contacts={contacts.length}
           visibleContacts={visibleContacts}
