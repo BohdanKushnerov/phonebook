@@ -6,20 +6,20 @@ import ContactList from './Contacts/ContactList';
 import { Container } from './App.style';
 
 export function App() {
-  // const [contacts, setContacts] = useState(() => {
-  //   return JSON.parse(localStorage.getItem('contacts')) ?? [];
-  // });
-  //============================================
   const [contacts, setContacts] = useState(() => {
-    return (
-      JSON.parse(localStorage.getItem('contacts')) ?? [
-        { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-        { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-        { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-        { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-      ]
-    );
+    return JSON.parse(localStorage.getItem('contacts')) ?? [];
   });
+  //============================================
+  // const [contacts, setContacts] = useState(() => {
+  //   return (
+  //     JSON.parse(localStorage.getItem('contacts')) ?? [
+  //       { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+  //       { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+  //       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+  //       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+  //     ]
+  //   );
+  // });
 
   const [filter, setFilter] = useState('');
 
@@ -46,8 +46,6 @@ export function App() {
     );
   };
 
-  const visibleContacts = getVisibleContacts();
-
   return (
     <Container>
       <h1>Phonebook</h1>
@@ -57,7 +55,7 @@ export function App() {
       <Filter filter={filter} handleChangeFilter={handleChangeFilter} />
       <ContactList
         contacts={contacts.length}
-        visibleContacts={visibleContacts}
+        visibleContacts={getVisibleContacts()}
         deleteContact={deleteContact}
       />
     </Container>
