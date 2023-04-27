@@ -1,13 +1,11 @@
 import { useState } from 'react';
-
 import PropTypes from 'prop-types';
 import { Form, Button, Input, Label } from './ContactForm.styled';
 
-import { addContact } from 'redux/store';
 import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/actions';
 
 export default function ContactForm({ contacts }) {
-  console.log(contacts);
   const dispatch = useDispatch();
 
   const [name, setName] = useState('');
@@ -20,8 +18,7 @@ export default function ContactForm({ contacts }) {
     );
     isIncludes
       ? alert(`${name} is already in contacts`)
-      : // : addContact({ name, number });
-        dispatch(addContact({ name, number }));
+      : dispatch(addContact({ name, number }));
     reset();
   };
 
@@ -80,6 +77,5 @@ export default function ContactForm({ contacts }) {
 }
 
 ContactForm.propTypes = {
-  // addContact: PropTypes.func.isRequired,
   contacts: PropTypes.array.isRequired,
 };

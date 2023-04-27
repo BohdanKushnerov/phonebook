@@ -1,33 +1,24 @@
-import { useEffect } from 'react';
-// import { nanoid } from 'nanoid';
 import ContactForm from './ContactForm';
 import Filter from './Filter';
 import ContactList from './Contacts/ContactList';
 import { Container } from './App.style';
+
 import { useDispatch, useSelector } from 'react-redux';
+import { changeFilter } from 'redux/actions';
+import { getFilter, getContacts } from 'redux/selectors';
 
 export function App() {
-  const filterState = useSelector(state => state.filter);
-  const contactsState = useSelector(state => state.contacts);
-
+  const filterState = useSelector(getFilter);
+  const contactsState = useSelector(getContacts);
   const dispatch = useDispatch();
 
-  // const [contacts, setContacts] = useState(() => {
-  //   return JSON.parse(localStorage.getItem('contacts')) ?? [];
-  // });
-
-  useEffect(() => {
-    window.localStorage.setItem('contacts', JSON.stringify(contactsState));
-  }, [contactsState]);
-
   const handleChangeFilter = e => {
-    dispatch({ type: 'handleChangeFilter', payload: e.currentTarget.value });
+    dispatch(changeFilter(e));
   };
 
   const getVisibleContacts = () => {
     const normalizedFilter = filterState.toLowerCase();
     return contactsState.filter(contact => {
-      console.log(contact);
       return contact.name.toLowerCase().includes(normalizedFilter);
     });
   };
