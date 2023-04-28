@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { Form, Button, Input, Label } from './ContactForm.styled';
 
 import { useDispatch } from 'react-redux';
-// import { addContact } from 'redux/actions';
-import { addContact } from 'redux/store';
+import { addContact } from 'redux/contacts/contactsSlice';
 
 export default function ContactForm({ contacts }) {
   const dispatch = useDispatch();

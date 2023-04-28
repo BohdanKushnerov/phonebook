@@ -4,16 +4,12 @@ import ContactList from './Contacts/ContactList';
 import { Container } from './App.style';
 
 import { useDispatch, useSelector } from 'react-redux';
-// import { changeFilter } from 'redux/actions';
-import { changeFilter } from 'redux/store';
+import { changeFilter } from 'redux/filter/filterSlice';
 import { getFilter, getContacts } from 'redux/selectors';
 
 export function App() {
   const filterState = useSelector(getFilter);
   const contactsState = useSelector(getContacts);
-
-  const state = useSelector(state => state);
-  console.log(state);
 
   console.log('filterState', filterState);
 
