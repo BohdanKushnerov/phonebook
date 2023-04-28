@@ -3,7 +3,8 @@ import Contact from '../Contact';
 import { List, ContactItem, ContactButton } from './ContactList.styled';
 
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/actions';
+// import { deleteContact } from 'redux/actions';
+import { deleteContact } from 'redux/store';
 
 const ContactList = ({ contacts, visibleContacts }) => {
   const dispatch = useDispatch();
