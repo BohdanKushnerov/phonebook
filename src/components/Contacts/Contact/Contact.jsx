@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
 import { Content } from './Contact.styled';
 
-const Contact = ({ name, number }) => {
+const Contact = ({ name, phone }) => {
   return (
     <Content>
-      {name}: {number}
+      {name}: {phone}
     </Content>
   );
 };
 
 Contact.propTypes = {
   name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
 };
 
 export default Contact;
