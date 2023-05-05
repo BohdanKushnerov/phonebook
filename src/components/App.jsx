@@ -7,6 +7,7 @@ import ContactForm from './ContactForm';
 import Filter from './Filter';
 import ContactList from './Contacts/ContactList';
 import { Container } from './App.style';
+import { Header } from './Header/Header';
 
 export function App() {
   const filterState = useSelector(getFilter);
@@ -33,20 +34,23 @@ export function App() {
     );
 
   return (
-    <Container>
-      <h1>Phonebook</h1>
-      <ContactForm contacts={items} />
+    <>
+      <Header />
+      <Container>
+        <h1>Phonebook</h1>
+        <ContactForm contacts={items} />
 
-      <h2>Contacts</h2>
-      <Filter filter={filterState} handleChangeFilter={handleChangeFilter} />
-      {isLoading && <p>Loading contacts...</p>}
-      {items.length > 0 && (
-        <ContactList
-          contacts={items.length}
-          visibleContacts={getVisibleContacts()}
-        />
-      )}
-      {error && <p>{error}</p>}
-    </Container>
+        <h2>Contacts</h2>
+        <Filter filter={filterState} handleChangeFilter={handleChangeFilter} />
+        {isLoading && <p>Loading contacts...</p>}
+        {items.length > 0 && (
+          <ContactList
+            contacts={items.length}
+            visibleContacts={getVisibleContacts()}
+          />
+        )}
+        {error && <p>{error}</p>}
+      </Container>
+    </>
   );
 }

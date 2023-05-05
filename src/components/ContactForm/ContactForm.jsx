@@ -2,9 +2,18 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addContacts } from 'redux/operations';
 import PropTypes from 'prop-types';
-import { Form, Button, Input, Label } from './ContactForm.styled';
+import { Form } from './ContactForm.styled';
+
+import { useTheme } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+// import { InputBase } from '@mui/material';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 export default function ContactForm({ contacts }) {
+  const theme = useTheme();
+  console.log(theme);
+
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
@@ -46,32 +55,63 @@ export default function ContactForm({ contacts }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Label>
-        Name
-        <Input
-          type="text"
+      <Box
+        sx={{
+          maxWidth: '100%',
+        }}
+      >
+        <TextField
+          fullWidth
+          id="outlined-controlled"
+          label="Name"
           name="name"
           value={name}
           onChange={handleChange}
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-        />
-      </Label>
+          inputProps={{
+            pattern:
+              "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
+            title:
+              "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan",
+            required: true,
+          }}
+          // sx={{
 
-      <Label>
-        Number
-        <Input
-          type="tel"
+          //   color: theme.palette.mode === 'dark' ? '#000' : '#fff',
+          //   '&:focus': {
+          //     borderColor: theme.palette.mode === 'dark' ? '#000' : '#fff',
+          //     backgroundColor:
+          //       theme.palette.mode === 'dark' ? '#f4f4f4' : '#B6E7BA',
+          //   },
+          // }}
+        />
+      </Box>
+
+      <Box
+        sx={{
+          // width: 500,
+          maxWidth: '100%',
+        }}
+      >
+        <TextField
+          fullWidth
+          id="outlined-controlled"
+          label="Phone"
           name="phone"
           value={phone}
           onChange={handleChange}
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
+          inputProps={{
+            pattern:
+              '\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}',
+            title:
+              'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +',
+            required: true,
+          }}
         />
-      </Label>
-      <Button type="submit">Add contact</Button>
+      </Box>
+
+      <Button variant="contained" color="success" type="submit">
+        Add contact
+      </Button>
     </Form>
   );
 }
