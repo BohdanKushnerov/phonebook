@@ -15,21 +15,22 @@ export function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    const promise = dispatch(fetchContacts());
+
+    return () => {
+      promise.abort();
+    };
   }, [dispatch]);
 
   const handleChangeFilter = e => {
     const { value } = e.currentTarget;
-
     dispatch(changeFilter(value));
   };
 
-  const getVisibleContacts = () => {
-    const normalizedFilter = filterState.toLowerCase();
-    return items.filter(contact => {
-      return contact.name.toLowerCase().includes(normalizedFilter);
-    });
-  };
+  const getVisibleContacts = () =>
+    items.filter(({ name }) =>
+      name.toLowerCase().includes(filterState.toLowerCase())
+    );
 
   return (
     <Container>

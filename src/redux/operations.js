@@ -1,58 +1,46 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import {
-  fetchingInProgress,
-  fetchingSuccess,
-  fetchingError,
-  deleteContactInProgress,
-  deleteContactSuccess,
-  deleteContactError,
-  addContactInProgress,
-  addContactSuccess,
-  addContactError,
-} from './contacts/contactsSlice';
 
 axios.defaults.baseURL = 'https://6451ef13bce0b0a0f7387a3e.mockapi.io';
-export const fetchContacts = () => async dispatch => {
-  try {
-    dispatch(fetchingInProgress());
-    const response = await axios.get('/contacts');
 
-    console.log(response.data);
-    dispatch(fetchingSuccess(response.data));
-  } catch (e) {
-    dispatch(fetchingError(e.message));
+export const fetchContacts = createAsyncThunk(
+  'contacts/fetchContacts',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get('/contacts', {
+        signal: thunkAPI.signal,
+      });
+      return response.data;
+    } catch (e) {
+      if (axios.isCancel(e)) {
+        console.log('Request was canceled');
+      } else {
+        return thunkAPI.rejectWithValue(e.message);
+      }
+    }
   }
-};
+);
 
-export const deleteContactAction = id => {
-  return async dispatch => {
+export const addContacts = createAsyncThunk(
+  'contacts/addContacts',
+  async ({ name, phone }, thunkAPI) => {
     try {
-      dispatch(deleteContactInProgress());
-      const response = await axios.delete(
-        `https://6451ef13bce0b0a0f7387a3e.mockapi.io/contacts/${id}`
-      );
-
-      console.log(response.data);
-      dispatch(deleteContactSuccess(response.data.id));
+      const response = await axios.post(`/contacts/`, { name, phone });
+      return response.data;
     } catch (e) {
-      dispatch(deleteContactError(e.message));
+      return thunkAPI.rejectWithValue(e.message);
     }
-  };
-};
+  }
+);
 
-export const addContactAction = ({ name, phone }) => {
-  return async dispatch => {
+export const deleteContacts = createAsyncThunk(
+  'contacts/deleteContacts',
+  async (id, thunkAPI) => {
     try {
-      dispatch(addContactInProgress());
-      const response = await axios.post(
-        `https://6451ef13bce0b0a0f7387a3e.mockapi.io/contacts/`,
-        { name, phone }
-      );
-
-      console.log(response.data);
-      dispatch(addContactSuccess(response.data));
+      const response = await axios.delete(`/contacts/${id}`);
+      return response.data;
     } catch (e) {
-      dispatch(addContactError(e.message));
+      return thunkAPI.rejectWithValue(e.message);
     }
-  };
-};
+  }
+);
