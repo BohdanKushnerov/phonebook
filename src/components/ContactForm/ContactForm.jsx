@@ -55,15 +55,12 @@ export default function ContactForm({ contacts }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Box
-        sx={{
-          maxWidth: '100%',
-        }}
-      >
+      <Box>
         <TextField
           fullWidth
           id="outlined-controlled"
           label="Name"
+          type="text"
           name="name"
           value={name}
           onChange={handleChange}
@@ -74,42 +71,51 @@ export default function ContactForm({ contacts }) {
               "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan",
             required: true,
           }}
-          // sx={{
-
-          //   color: theme.palette.mode === 'dark' ? '#000' : '#fff',
-          //   '&:focus': {
-          //     borderColor: theme.palette.mode === 'dark' ? '#000' : '#fff',
-          //     backgroundColor:
-          //       theme.palette.mode === 'dark' ? '#f4f4f4' : '#B6E7BA',
-          //   },
-          // }}
         />
       </Box>
 
-      <Box
-        sx={{
-          // width: 500,
-          maxWidth: '100%',
-        }}
-      >
+      <Box>
         <TextField
           fullWidth
           id="outlined-controlled"
           label="Phone"
+          type="tel"
           name="phone"
           value={phone}
           onChange={handleChange}
           inputProps={{
             pattern:
-              '\\+?\\d{1,4}?[-.\\s]?\\(?\\d{1,3}?\\)?[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,4}[-.\\s]?\\d{1,9}',
+              '\\+?\\d{0,3}[-\\s]?\\(?\\d{1,3}\\)?[-\\s]?\\d{1,4}[-\\s]?\\d{1,4}[-\\s]?\\d{1,9}',
             title:
               'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +',
             required: true,
           }}
+          autoComplete="on"
         />
       </Box>
 
-      <Button variant="contained" color="success" type="submit">
+      <Button
+        variant="contained"
+        type="submit"
+        sx={{
+          fontSize: 'large',
+          fontWeight: 'bold',
+          color:
+            theme.palette.mode === 'dark'
+              ? theme.palette.button.dark
+              : theme.palette.button.main,
+          backgroundColor:
+            theme.palette.mode === 'dark'
+              ? theme.palette.button.bcgDark
+              : theme.palette.button.bcg,
+          '&:hover': {
+            backgroundColor:
+              theme.palette.mode === 'dark'
+                ? theme.palette.button.hoverDark
+                : theme.palette.button.hover,
+          },
+        }}
+      >
         Add contact
       </Button>
     </Form>

@@ -33,7 +33,6 @@ export const Header = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
           </Typography>
-          {/* <Button color="inherit">Login</Button> */}
           <IconButton
             sx={{ ml: 1 }}
             onClick={colorMode.toggleColorMode}

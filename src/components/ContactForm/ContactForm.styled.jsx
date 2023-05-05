@@ -1,9 +1,5 @@
-// import styled from '@emotion/styled';
-
-// import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
-import { InputBase } from '@mui/material';
-// import TextField from '@mui/material';
+// import { InputBase } from '@mui/material';
 
 export const Form = styled('form')(() => ({
   display: 'flex',
@@ -15,24 +11,24 @@ export const Form = styled('form')(() => ({
   marginBottom: 50,
 }));
 
-export const Input = styled(InputBase)(({ theme }) => ({
-  width: '100%',
-  boxSizing: 'border-box',
-  padding: '15px 16px',
-  border: '1px solid rgba(0, 0, 0, 0)',
-  borderRadius: '4px',
-  // backgroundColor: '#b6e7ba',
-  // backgroundColor: theme.palette.bcgInput.main,
-  fontSize: '18px',
-  '&:focus': {
-    outline: 'none',
-    border: '1px solid green',
-    backgroundColor: '#cdf1d0',
-  },
-  '&:-webkit-autofill': {
-    transition: 'background-color 600000s 0s, color 600000s 0s',
-  },
-}));
+// export const Input = styled(InputBase)(({ theme }) => ({
+//   width: '100%',
+//   boxSizing: 'border-box',
+//   padding: '15px 16px',
+//   border: '1px solid rgba(0, 0, 0, 0)',
+//   borderRadius: '4px',
+//   // backgroundColor: '#b6e7ba',
+//   // backgroundColor: theme.palette.bcgInput.main,
+//   fontSize: '18px',
+//   '&:focus': {
+//     outline: 'none',
+//     border: '1px solid green',
+//     backgroundColor: '#cdf1d0',
+//   },
+//   '&:-webkit-autofill': {
+//     transition: 'background-color 600000s 0s, color 600000s 0s',
+//   },
+// }));
 
 // export const Input = styled.input`
 //   width: 100%;
