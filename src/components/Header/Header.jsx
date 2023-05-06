@@ -2,16 +2,14 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-// import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-
 import { useTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-
-import { ColorModeContext } from './Theme/Theme';
+import { ColorModeContext } from '../Theme/Theme';
+// import Typography from '@mui/material/Typography';
+// import Button from '@mui/material/Button';
+// import MenuIcon from '@mui/icons-material/Menu';
 
 export const Header = () => {
   const theme = useTheme();
@@ -19,9 +17,9 @@ export const Header = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar>
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -32,9 +30,9 @@ export const Header = () => {
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             News
-          </Typography>
+          </Typography> */}
           <IconButton
-            sx={{ ml: 1 }}
+            sx={{ ml: 'auto' }}
             onClick={colorMode.toggleColorMode}
             color="inherit"
           >

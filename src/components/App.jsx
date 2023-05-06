@@ -8,6 +8,7 @@ import Filter from './Filter';
 import ContactList from './Contacts/ContactList';
 import { Container } from './App.style';
 import { Header } from './Header/Header';
+import ScrollTopButton from './ScrollTop/ScrollTop';
 
 export function App() {
   const filterState = useSelector(getFilter);
@@ -34,8 +35,8 @@ export function App() {
     );
 
   return (
-    <>
-      <Header />
+    <div>
+      <Header position="sticky" />
       <Container>
         <h1>Phonebook</h1>
         <ContactForm contacts={items} />
@@ -50,7 +51,8 @@ export function App() {
           />
         )}
         {error && <p>{error}</p>}
+        <ScrollTopButton />
       </Container>
-    </>
+    </div>
   );
 }

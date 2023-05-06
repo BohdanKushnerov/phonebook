@@ -2,22 +2,19 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addContacts } from 'redux/operations';
 import PropTypes from 'prop-types';
-import { Form } from './ContactForm.styled';
 
+import { Form } from './ContactForm.styled';
 import { useTheme } from '@mui/material/styles';
 import Button from '@mui/material/Button';
-// import { InputBase } from '@mui/material';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 export default function ContactForm({ contacts }) {
-  const theme = useTheme();
-  console.log(theme);
-
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
   const dispatch = useDispatch();
+  const theme = useTheme();
 
   const handleSubmit = e => {
     e.preventDefault();
