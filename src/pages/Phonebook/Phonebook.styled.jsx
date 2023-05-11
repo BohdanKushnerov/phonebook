@@ -6,6 +6,6 @@ export const Container = styled.div`
   align-items: center;
   gap: 16px;
 
-  margin-top: 64px;
-  padding: 16px;
+  /* margin-top: 64px; */
+  /* padding: 16px; */
 `;

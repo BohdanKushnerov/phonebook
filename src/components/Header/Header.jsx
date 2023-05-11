@@ -7,9 +7,11 @@ import { useTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { ColorModeContext } from '../Theme/Theme';
-// import Typography from '@mui/material/Typography';
-// import Button from '@mui/material/Button';
+import Button from '@mui/material/Button';
 // import MenuIcon from '@mui/icons-material/Menu';
+
+import { NavLink } from 'react-router-dom';
+import { UserMenu } from 'components/UserMenu/UserMenu';
 
 export const Header = () => {
   const theme = useTheme();
@@ -18,7 +20,7 @@ export const Header = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar>
-        <Toolbar>
+        <Toolbar component="nav">
           {/* <IconButton
             size="large"
             edge="start"
@@ -27,10 +29,44 @@ export const Header = () => {
             sx={{ mr: 2 }}
           >
             <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
-          </Typography> */}
+          </IconButton> */}
+          <Toolbar
+            style={{
+              display: 'flex',
+              gap: 8,
+            }}
+          >
+            <NavLink to="/phonebook">
+              <Button
+                style={{
+                  backgroundColor: 'white',
+                }}
+              >
+                Phonebook
+              </Button>
+            </NavLink>
+            <NavLink to="/login">
+              <Button
+                style={{
+                  backgroundColor: 'white',
+                }}
+              >
+                Login
+              </Button>
+            </NavLink>
+            <NavLink to="/register">
+              <Button
+                style={{
+                  backgroundColor: 'white',
+                }}
+              >
+                Register
+              </Button>
+            </NavLink>
+          </Toolbar>
+          <div>
+            <UserMenu></UserMenu>
+          </div>
           <IconButton
             sx={{ ml: 'auto' }}
             onClick={colorMode.toggleColorMode}
