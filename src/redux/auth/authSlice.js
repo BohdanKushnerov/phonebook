@@ -1,4 +1,4 @@
-import { logIn, register, logOut } from './authOperations';
+import { logIn, register, logOut, refreshUser } from './authOperations';
 import { createSlice } from '@reduxjs/toolkit';
 
 import { persistReducer } from 'redux-persist';
@@ -28,6 +28,11 @@ const authSlice = createSlice({
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
+    },
+    [refreshUser.fulfilled](state, action) {
+      // console.log(action);
+      state.user = action.payload;
+      state.isLoggedIn = true;
     },
   },
 });
