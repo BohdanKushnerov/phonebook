@@ -7,6 +7,8 @@ import Register from '../pages/Register/Register';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/authOperations';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
 
 export function App() {
   const dispatch = useDispatch();
@@ -19,9 +21,22 @@ export function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/phonebook" element={<Phonebook />} />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute component={Login} redirectTo="/phonebook" />
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute component={Register} redirectTo="/phonebook" />
+          }
+        />
+        <Route
+          path="/phonebook"
+          element={<PrivateRoute component={Phonebook} redirectTo="/login" />}
+        />
       </Route>
     </Routes>
   );
