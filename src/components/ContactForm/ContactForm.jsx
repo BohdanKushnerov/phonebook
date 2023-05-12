@@ -11,7 +11,7 @@ import TextField from '@mui/material/TextField';
 
 export default function ContactForm({ contacts }) {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
   const theme = useTheme();
@@ -24,7 +24,7 @@ export default function ContactForm({ contacts }) {
 
     isIncludes
       ? alert(`${name} is already in contacts`)
-      : dispatch(addContacts({ name, phone }));
+      : dispatch(addContacts({ name, number }));
     reset();
   };
 
@@ -36,8 +36,8 @@ export default function ContactForm({ contacts }) {
         setName(value);
         break;
 
-      case 'phone':
-        setPhone(value);
+      case 'number':
+        setNumber(value);
         break;
 
       default:
@@ -47,7 +47,7 @@ export default function ContactForm({ contacts }) {
 
   const reset = () => {
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -77,8 +77,8 @@ export default function ContactForm({ contacts }) {
           id="outlined-controlled"
           label="Phone"
           type="tel"
-          name="phone"
-          value={phone}
+          name="number"
+          value={number}
           onChange={handleChange}
           inputProps={{
             pattern:

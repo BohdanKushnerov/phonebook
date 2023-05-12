@@ -10,7 +10,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import { DeleteBtn } from './Contact.styled';
 
-const Contact = ({ name, phone, id }) => {
+const Contact = ({ name, number, id }) => {
   const dispatch = useDispatch();
 
   return (
@@ -37,7 +37,7 @@ const Contact = ({ name, phone, id }) => {
         }}
       >
         <Typography variant="h6">{name}</Typography>
-        <p>{phone}</p>
+        <p>{number}</p>
       </ListItemText>
       <DeleteBtn
         type="button"
@@ -53,7 +53,7 @@ const Contact = ({ name, phone, id }) => {
 
 Contact.propTypes = {
   name: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
 };
 

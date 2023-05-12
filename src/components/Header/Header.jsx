@@ -65,7 +65,7 @@ export const Header = () => {
             </NavLink>
           </Toolbar>
           <div>
-            <UserMenu></UserMenu>
+            <UserMenu />
           </div>
           <IconButton
             sx={{ ml: 'auto' }}
