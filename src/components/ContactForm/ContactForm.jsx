@@ -7,6 +7,7 @@ import { Form } from '../../styles/Form.styled';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { MainButton } from 'styles/MainButton.styled';
+import { toast } from 'react-toastify';
 
 export default function ContactForm({ contacts }) {
   const [name, setName] = useState('');
@@ -21,7 +22,12 @@ export default function ContactForm({ contacts }) {
     );
 
     isIncludes
-      ? alert(`${name} is already in contacts`)
+      ? // ? toast.error(`${name} is already in contacts`)
+        toast.error(
+          <span>
+            <b>{name}</b> is already in contacts
+          </span>
+        )
       : dispatch(addContacts({ name, number }));
     reset();
   };
@@ -53,7 +59,7 @@ export default function ContactForm({ contacts }) {
       <Box>
         <TextField
           fullWidth
-          id="outlined-controlled"
+          id="name-outlined-controlled"
           label="Name"
           type="text"
           name="name"
@@ -72,7 +78,7 @@ export default function ContactForm({ contacts }) {
       <Box>
         <TextField
           fullWidth
-          id="outlined-controlled"
+          id="number-outlined-controlled"
           label="Phone"
           type="tel"
           name="number"

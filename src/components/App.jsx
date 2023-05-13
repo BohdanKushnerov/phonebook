@@ -9,11 +9,13 @@ import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/authOperations';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
+import { getisRefreshingStatus } from 'redux/auth/authSelectors';
 
 export function App() {
   const dispatch = useDispatch();
 
-  const isRefreshing = useSelector(state => state.auth.isRefreshing);
+  // const isRefreshing = useSelector(state => state.auth.isRefreshing);
+  const isRefreshing = useSelector(getisRefreshingStatus);
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -47,8 +49,6 @@ export function App() {
 }
 
 // обработка помилок
-// тост
-// форми
-// нав
-// селекторы
+// тост другу папку зробить
 // disable button когда пустые поля
+// current add signal

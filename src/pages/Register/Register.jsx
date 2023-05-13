@@ -39,7 +39,7 @@ export default function Register() {
     <Form onSubmit={handleSubmit}>
       <TextField
         fullWidth
-        id="outlined-controlled"
+        id="register-name-outlined-controlled"
         label="Username"
         type="text"
         name="name"
@@ -49,7 +49,7 @@ export default function Register() {
 
       <TextField
         fullWidth
-        id="outlined-controlled"
+        id="register-email-outlined-controlled"
         label="Email"
         type="email"
         name="email"
@@ -59,7 +59,7 @@ export default function Register() {
 
       <TextField
         fullWidth
-        id="outlined-controlled"
+        id="register-password-outlined-controlled"
         label="Password"
         type="password"
         name="password"

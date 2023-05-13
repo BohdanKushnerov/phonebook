@@ -39,8 +39,8 @@ export default function Login() {
 
         <TextField
           fullWidth
-          id="outlined-controlled"
-          label="Name"
+          id="email-outlined-controlled"
+          label="Email"
           type="email"
           name="email"
           value={email}
@@ -49,7 +49,7 @@ export default function Login() {
 
         <TextField
           fullWidth
-          id="outlined-controlled"
+          id="password-outlined-controlled"
           label="Password"
           // type="password"
           name="password"

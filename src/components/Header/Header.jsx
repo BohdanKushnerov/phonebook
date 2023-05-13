@@ -14,9 +14,11 @@ import { UserMenu } from 'components/UserMenu/UserMenu';
 import { useSelector } from 'react-redux';
 import { Nav } from 'components/Navigation/Nav';
 import { AuthNav } from 'components/Navigation/AuthNav';
+import { getisLoggedInStatus } from 'redux/auth/authSelectors';
 
 export const Header = () => {
-  const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  // const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const isLoggedIn = useSelector(getisLoggedInStatus);
 
   const theme = useTheme();
   const colorMode = React.useContext(ColorModeContext);
