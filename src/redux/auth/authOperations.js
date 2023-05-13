@@ -14,47 +14,61 @@ const unSetToken = () => {
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
-    // const res = await axios.post('/users/signup', credentials);
-    const res = await axios.post('/users/signup', credentials);
+    try {
+      const response = await axios.post('/users/signup', credentials);
 
-    console.log(res);
-    setToken(res.data.token);
-    return res.data;
+      setToken(response.data.token);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
 
 export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
-    // const res = await axios.post('/users/login', credentials);
-    const res = await axios.post('/users/login', credentials);
+    try {
+      const response = await axios.post('/users/login', credentials);
 
-    console.log(res);
-    setToken(res.data.token);
-    return res.data;
+      setToken(response.data.token);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
 
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
-  // const res = await axios.post('/users/logout');
-  const res = await axios.post('/users/logout');
+  try {
+    const response = await axios.post('/users/logout');
 
-  console.log(res);
-  unSetToken(res.data.token);
-  return res.data;
+    unSetToken(response.data.token);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+
+    return thunkAPI.rejectWithValue(error.message);
+  }
 });
 
 export const refreshUser = createAsyncThunk(
-  'auth/refreshuser',
+  'auth/refreshUser',
   async (_, thunkAPI) => {
     const { token } = thunkAPI.getState().auth;
-    console.log(token);
     if (!token) return thunkAPI.rejectWithValue();
 
-    console.log('Refreshing');
+    try {
+      setToken(token);
+      const response = await axios.get('/users/current');
+      return response.data;
+    } catch (error) {
+      console.log(error);
 
-    setToken(token);
-    const res = await axios.get('/users/current');
-    return res.data;
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );

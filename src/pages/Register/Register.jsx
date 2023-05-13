@@ -1,6 +1,9 @@
+import { TextField } from '@mui/material';
+import { Form } from 'styles/Form.styled';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authOperations';
+import { MainButton } from 'styles/MainButton.styled';
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -29,35 +32,44 @@ export default function Register() {
 
   const handleSubmit = e => {
     e.preventDefault();
-
     dispatch(register({ name, email, password }));
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username
-        <input type="text" name="name" value={name} onChange={handleChange} />
-      </label>
-      <label>
-        Email
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handleChange}
-        />
-      </label>
-      <button type="submit">Register</button>
-    </form>
+    <Form onSubmit={handleSubmit}>
+      <TextField
+        fullWidth
+        id="outlined-controlled"
+        label="Username"
+        type="text"
+        name="name"
+        value={name}
+        onChange={handleChange}
+      />
+
+      <TextField
+        fullWidth
+        id="outlined-controlled"
+        label="Email"
+        type="email"
+        name="email"
+        value={email}
+        onChange={handleChange}
+      />
+
+      <TextField
+        fullWidth
+        id="outlined-controlled"
+        label="Password"
+        type="password"
+        name="password"
+        value={password}
+        onChange={handleChange}
+      />
+
+      <MainButton variant="contained" type="submit">
+        Register
+      </MainButton>
+    </Form>
   );
 }

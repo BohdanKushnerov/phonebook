@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import { useTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { ColorModeContext } from '../Theme/Theme';
+import { ColorModeContext } from '../../styles/theme/Theme';
 // import Button from '@mui/material/Button';
 // import MenuIcon from '@mui/icons-material/Menu';
 
@@ -23,7 +23,13 @@ export const Header = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar>
+      <AppBar
+        style={
+          {
+            // padding: 8,
+          }
+        }
+      >
         <Toolbar component="nav">
           {/* <IconButton
             size="large"
@@ -35,10 +41,6 @@ export const Header = () => {
             <MenuIcon />
           </IconButton> */}
           <Nav />
-
-          {/* <UserMenu />
-
-          <AuthNav /> */}
 
           <Toolbar sx={{ ml: 'auto' }}>
             {isLoggedIn ? <UserMenu /> : <AuthNav />}

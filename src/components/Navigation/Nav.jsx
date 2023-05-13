@@ -1,5 +1,4 @@
 import { Toolbar } from '@mui/material';
-// import { StyledNavLink } from './Nav.styled';
 import { useSelector } from 'react-redux';
 import { StyledNavLink } from './Nav.styled';
 

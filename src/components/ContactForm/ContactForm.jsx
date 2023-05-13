@@ -3,18 +3,16 @@ import { useDispatch } from 'react-redux';
 import { addContacts } from 'redux/contacts/operations';
 import PropTypes from 'prop-types';
 
-import { Form } from './ContactForm.styled';
-import { useTheme } from '@mui/material/styles';
-import Button from '@mui/material/Button';
+import { Form } from '../../styles/Form.styled';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { MainButton } from 'styles/MainButton.styled';
 
 export default function ContactForm({ contacts }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
-  const theme = useTheme();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -91,30 +89,9 @@ export default function ContactForm({ contacts }) {
         />
       </Box>
 
-      <Button
-        variant="contained"
-        type="submit"
-        sx={{
-          fontSize: 'large',
-          fontWeight: 'bold',
-          color:
-            theme.palette.mode === 'dark'
-              ? theme.palette.button.dark
-              : theme.palette.button.main,
-          backgroundColor:
-            theme.palette.mode === 'dark'
-              ? theme.palette.button.bcgDark
-              : theme.palette.button.bcg,
-          '&:hover': {
-            backgroundColor:
-              theme.palette.mode === 'dark'
-                ? theme.palette.button.hoverDark
-                : theme.palette.button.hover,
-          },
-        }}
-      >
+      <MainButton variant="contained" type="submit">
         Add contact
-      </Button>
+      </MainButton>
     </Form>
   );
 }

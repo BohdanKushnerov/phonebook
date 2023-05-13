@@ -4,8 +4,12 @@ export const Form = styled('form')(() => ({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
+  // alignItems: 'center',
   gap: 16,
 
-  width: 350,
+  margin: '0 auto',
+  width: '100%',
+  minWidth: 200,
+  maxWidth: 400,
   marginBottom: 50,
 }));
