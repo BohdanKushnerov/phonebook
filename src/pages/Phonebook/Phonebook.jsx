@@ -7,7 +7,7 @@ import ContactForm from 'components/ContactForm';
 import Filter from 'components/Filter';
 import ContactList from 'components/Contacts/ContactList';
 import ScrollTopButton from 'components/ScrollTop';
-import { Container } from './Phonebook.styled';
+import { PageContainer } from 'styles/common/PageContainer.styled';
 
 export default function Phonebook() {
   const filterState = useSelector(getFilter);
@@ -34,7 +34,7 @@ export default function Phonebook() {
     );
 
   return (
-    <Container>
+    <PageContainer>
       <h1>Phonebook</h1>
       <ContactForm />
 
@@ -49,6 +49,6 @@ export default function Phonebook() {
       )}
       {error && <p>{error}</p>}
       <ScrollTopButton />
-    </Container>
+    </PageContainer>
   );
 }

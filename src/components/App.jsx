@@ -4,6 +4,7 @@ import Phonebook from 'pages/Phonebook';
 import Home from 'pages/Home';
 import Login from 'pages/Login';
 import Register from 'pages/Register';
+import ErrorPage from 'pages/ErrorPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/authOperations';
@@ -45,6 +46,7 @@ export function App() {
             path="/phonebook"
             element={<PrivateRoute component={Phonebook} redirectTo="/login" />}
           />
+          <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
     )
