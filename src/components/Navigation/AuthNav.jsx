@@ -1,9 +1,7 @@
 import { Toolbar } from '@mui/material';
 import { StyledNavLink } from 'components/Navigation/Nav.styled';
 
-// import Typography from '@mui/material/Typography';
-
-export const AuthNav = () => {
+const AuthNav = () => {
   return (
     <Toolbar
       style={{
@@ -11,11 +9,10 @@ export const AuthNav = () => {
         gap: 8,
       }}
     >
-      <StyledNavLink to="/login">
-        Login
-        {/* <Typography variant="h6">Login</Typography> */}
-      </StyledNavLink>
+      <StyledNavLink to="/login">Login</StyledNavLink>
       <StyledNavLink to="/register">Register</StyledNavLink>
     </Toolbar>
   );
 };
+
+export default AuthNav;

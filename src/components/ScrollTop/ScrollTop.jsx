@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Fab from '@mui/material/Fab';
 import NavigationIcon from '@mui/icons-material/Navigation';
 
-export default function ScrollTopButton() {
+function ScrollTopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
@@ -39,3 +39,5 @@ export default function ScrollTopButton() {
     </Fab>
   );
 }
+
+export default ScrollTopButton;

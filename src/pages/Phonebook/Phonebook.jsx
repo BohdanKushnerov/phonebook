@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeFilter } from 'redux/filter/filterSlice';
 import { fetchContacts } from 'redux/contacts/operations';
 import { getContacts, getFilter } from 'redux/contacts/selectors';
+import ContactForm from 'components/ContactForm';
+import Filter from 'components/Filter';
+import ContactList from 'components/Contacts/ContactList';
+import ScrollTopButton from 'components/ScrollTop';
 import { Container } from './Phonebook.styled';
-import ContactForm from 'components/ContactForm/ContactForm';
-import Filter from 'components/Filter/Filter';
-import ContactList from 'components/Contacts/ContactList/ContactList';
-import ScrollTopButton from 'components/ScrollTop/ScrollTop';
 
 export default function Phonebook() {
   const filterState = useSelector(getFilter);
@@ -36,7 +36,7 @@ export default function Phonebook() {
   return (
     <Container>
       <h1>Phonebook</h1>
-      <ContactForm contacts={items} />
+      <ContactForm />
 
       <h2>Contacts</h2>
       <Filter filter={filterState} handleChangeFilter={handleChangeFilter} />

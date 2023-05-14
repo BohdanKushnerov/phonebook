@@ -1,4 +1,9 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux';
+import { getisLoggedInStatus } from 'redux/auth/authSelectors';
+import UserMenu from 'components/UserMenu';
+import { AuthNav, Nav } from 'components/Navigation';
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -6,18 +11,9 @@ import IconButton from '@mui/material/IconButton';
 import { useTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { ColorModeContext } from '../../styles/theme/Theme';
-// import Button from '@mui/material/Button';
-// import MenuIcon from '@mui/icons-material/Menu';
+import { ColorModeContext } from 'styles/theme';
 
-import { UserMenu } from 'components/UserMenu/UserMenu';
-import { useSelector } from 'react-redux';
-import { Nav } from 'components/Navigation/Nav';
-import { AuthNav } from 'components/Navigation/AuthNav';
-import { getisLoggedInStatus } from 'redux/auth/authSelectors';
-
-export const Header = () => {
-  // const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+const Header = () => {
   const isLoggedIn = useSelector(getisLoggedInStatus);
 
   const theme = useTheme();
@@ -25,25 +21,9 @@ export const Header = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar
-        style={
-          {
-            // padding: 8,
-          }
-        }
-      >
+      <AppBar>
         <Toolbar component="nav">
-          {/* <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton> */}
           <Nav />
-
           <Toolbar sx={{ ml: 'auto' }}>
             {isLoggedIn ? <UserMenu /> : <AuthNav />}
             <IconButton onClick={colorMode.toggleColorMode} color="inherit">
@@ -59,3 +39,5 @@ export const Header = () => {
     </Box>
   );
 };
+
+export default Header;

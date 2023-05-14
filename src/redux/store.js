@@ -11,7 +11,7 @@ import {
 import { contactsReducer } from './contacts/contactsSlice';
 import { filterReducer } from './filter/filterSlice';
 import { persistedReducer } from './auth/authSlice';
-import { handleAddContactFulfilled } from 'styles/ToastActions';
+import { handleAddContactFulfilled } from 'styles/common/ToastActions';
 
 export const store = configureStore({
   reducer: {

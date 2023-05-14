@@ -51,12 +51,7 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      // .addCase(register.fulfilled, handleAuthFulfilled)
-      // .addCase(register.rejected, handleAuthRejected)
-      // .addCase(logIn.fulfilled, handleAuthFulfilled)
-      // .addCase(logIn.rejected, handleAuthRejected)
       .addCase(logOut.fulfilled, handleLogOutFulfilled)
-      // .addCase(logOut.rejected, handleAuthRejected)
       .addCase(refreshUser.pending, handleRefreshUserPending)
       .addCase(refreshUser.fulfilled, handleRefreshUserFulfilled)
       .addCase(refreshUser.rejected, handleRefreshUserRejected)

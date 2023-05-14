@@ -1,29 +1,29 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContacts } from 'redux/contacts/operations';
-import PropTypes from 'prop-types';
 
-import { Form } from '../../styles/Form.styled';
+import { Form } from '../../styles/common/Form.styled';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { MainButton } from 'styles/MainButton.styled';
+import { MainButton } from 'styles/common/MainButton.styled';
 import { toast } from 'react-toastify';
+import { getContacts } from 'redux/contacts/selectors';
 
-export default function ContactForm({ contacts }) {
+export default function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
   const dispatch = useDispatch();
+  const { items } = useSelector(getContacts);
 
   const handleSubmit = e => {
     e.preventDefault();
-    const isIncludes = contacts.find(
+    const isIncludes = items.find(
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
 
     isIncludes
-      ? // ? toast.error(`${name} is already in contacts`)
-        toast.error(
+      ? toast.error(
           <span>
             <b>{name}</b> is already in contacts
           </span>
@@ -101,7 +101,3 @@ export default function ContactForm({ contacts }) {
     </Form>
   );
 }
-
-ContactForm.propTypes = {
-  contacts: PropTypes.array.isRequired,
-};

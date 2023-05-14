@@ -2,7 +2,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const handleAddContactFulfilled = store => next => action => {
-  console.log(action);
+  // console.log(action);
   if (action.type === 'auth/login/fulfilled') {
     toast.info(
       <span>
@@ -17,6 +17,9 @@ export const handleAddContactFulfilled = store => next => action => {
         <b>{action.payload.user.name}</b>
       </span>
     );
+  }
+  if (action.type === 'auth/logout/fulfilled') {
+    toast.info('See you soon =)');
   }
   if (action.type === 'contacts/addContacts/fulfilled') {
     toast.success(

@@ -6,7 +6,7 @@ export const ColorModeContext = React.createContext({
   toggleColorMode: () => {},
 });
 
-export default function ToggleColorMode({ children }) {
+export function ToggleColorMode({ children }) {
   const [mode, setMode] = React.useState(() => {
     return JSON.parse(localStorage.getItem('theme')) ?? 'light';
   });
@@ -63,3 +63,5 @@ export default function ToggleColorMode({ children }) {
     </ColorModeContext.Provider>
   );
 }
+
+// export default { ToggleColorMode, ColorModeContext };

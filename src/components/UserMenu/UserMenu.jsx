@@ -1,14 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from 'redux/auth/authOperations';
-import { UserMenuBtn } from './UserMenu.styled';
 import { getAuthName } from 'redux/auth/authSelectors';
-// import { Typography } from '@mui/material';
-// import LogoutIcon from '@mui/icons-material/Logout';
+import { UserMenuBtn } from './UserMenu.styled';
 
-export const UserMenu = () => {
+const UserMenu = () => {
   const dispatch = useDispatch();
 
-  // const name = useSelector(state => state.auth.user.name);
   const name = useSelector(getAuthName);
 
   return (
@@ -16,7 +13,6 @@ export const UserMenu = () => {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        // justifyContent: 'center',
         gap: 4,
         alignItems: 'center',
       }}
@@ -34,3 +30,5 @@ export const UserMenu = () => {
     </div>
   );
 };
+
+export default UserMenu;

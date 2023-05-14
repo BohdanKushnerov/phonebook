@@ -1,9 +1,9 @@
 import { TextField } from '@mui/material';
-import { Form } from 'styles/Form.styled';
+import { Form } from 'styles/common/Form.styled';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/authOperations';
-import { MainButton } from 'styles/MainButton.styled';
+import { MainButton } from 'styles/common/MainButton.styled';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -35,8 +35,8 @@ export default function Login() {
   return (
     <>
       <Form onSubmit={handleSubmit}>
-        <p>E: "yayaya@mail.com" P:"weqew123"</p>
-
+        <p>Email: "mytest@mail.com"</p>
+        <p>Password:"qwerty123"</p>
         <TextField
           fullWidth
           id="email-outlined-controlled"
@@ -46,17 +46,15 @@ export default function Login() {
           value={email}
           onChange={handleChange}
         />
-
         <TextField
           fullWidth
           id="password-outlined-controlled"
           label="Password"
-          // type="password"
+          type="password"
           name="password"
           value={password}
           onChange={handleChange}
         />
-
         <MainButton variant="contained" type="submit">
           Log In
         </MainButton>

@@ -1,9 +1,9 @@
 import { TextField } from '@mui/material';
-import { Form } from 'styles/Form.styled';
+import { Form } from 'styles/common/Form.styled';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/authOperations';
-import { MainButton } from 'styles/MainButton.styled';
+import { MainButton } from 'styles/common/MainButton.styled';
 
 export default function Register() {
   const [name, setName] = useState('');

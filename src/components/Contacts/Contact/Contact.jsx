@@ -8,7 +8,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import { DeleteBtn } from '../../../styles/DeleteBtn.styled';
+import { DeleteBtn } from 'styles/common/DeleteBtn.styled';
 
 const Contact = ({ name, number, id }) => {
   const dispatch = useDispatch();

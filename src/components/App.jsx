@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
-import Phonebook from '../pages/Phonebook/Phonebook';
-import Home from '../pages/Home/Home';
-import Login from '../pages/Login/Login';
-import Register from '../pages/Register/Register';
+import Phonebook from 'pages/Phonebook';
+import Home from 'pages/Home';
+import Login from 'pages/Login';
+import Register from 'pages/Register';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/authOperations';
@@ -14,11 +14,14 @@ import { getisRefreshingStatus } from 'redux/auth/authSelectors';
 export function App() {
   const dispatch = useDispatch();
 
-  // const isRefreshing = useSelector(state => state.auth.isRefreshing);
   const isRefreshing = useSelector(getisRefreshingStatus);
 
   useEffect(() => {
-    dispatch(refreshUser());
+    const promise = dispatch(refreshUser());
+
+    return () => {
+      promise.abort();
+    };
   }, [dispatch]);
 
   return (
@@ -47,8 +50,3 @@ export function App() {
     )
   );
 }
-
-// обработка помилок
-// тост другу папку зробить
-// disable button когда пустые поля
-// current add signal

@@ -1,10 +1,9 @@
 import { Toolbar } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { StyledNavLink } from './Nav.styled';
 import { getisLoggedInStatus } from 'redux/auth/authSelectors';
+import { StyledNavLink } from './Nav.styled';
 
-export const Nav = () => {
-  // const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+const Nav = () => {
   const isLoggedIn = useSelector(getisLoggedInStatus);
 
   return (
@@ -19,3 +18,5 @@ export const Nav = () => {
     </Toolbar>
   );
 };
+
+export default Nav;
