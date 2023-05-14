@@ -35,8 +35,8 @@ export default function Login() {
   return (
     <>
       <Form onSubmit={handleSubmit}>
-        <p>Email: "mytest@mail.com"</p>
-        <p>Password:"qwerty123"</p>
+        {/* <p>Email: "mytest@mail.com"</p>
+        <p>Password:"qwerty123"</p> */}
         <TextField
           fullWidth
           id="email-outlined-controlled"
