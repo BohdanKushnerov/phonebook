@@ -22,15 +22,6 @@ export const StyledNavLink = styled(NavLink)(({ theme }) => ({
         : theme.palette.button.hover,
   },
   '&:hover': {
-    // backgroundColor:
-    //   theme.palette.mode === 'dark'
-    //     ? theme.palette.button.dark
-    //     : theme.palette.button.hoverDark,
-    // border: '1px solid black',
-
-    // boxShadow:
-    //   '1px 1px 6px rgba(0,0,0,.12), 1px 1px 3px rgba(0,0,0,.14), 1px 1px 3px rgba(0,0,0,.2)',
-
     boxShadow:
       theme.palette.mode === 'dark'
         ? '1px 1px 6px rgba(255,255,255,.12), 1px 1px 3px rgba(255,255,255,.14), 1px 1px 3px rgba(255,255,255,.2)'

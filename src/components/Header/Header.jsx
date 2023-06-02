@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { getisLoggedInStatus } from 'redux/auth/authSelectors';
 import UserMenu from 'components/UserMenu';
 import { AuthNav, Nav } from 'components/Navigation';
-
+import { ColorModeContext } from 'assets/styles/theme';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,7 +11,6 @@ import IconButton from '@mui/material/IconButton';
 import { useTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { ColorModeContext } from 'styles/theme';
 
 const Header = () => {
   const isLoggedIn = useSelector(getisLoggedInStatus);

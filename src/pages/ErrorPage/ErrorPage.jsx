@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { MainButton } from 'styles/common/MainButton.styled';
-import { PageContainer } from 'styles/common/PageContainer.styled';
+import { MainButton, PageContainer } from 'assets/styles/common';
 
 export default function ErrorPage() {
   const navigate = useNavigate();

@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContacts } from 'redux/contacts/operations';
-
-import { Form } from '../../styles/common/Form.styled';
+import { getContacts } from 'redux/contacts/selectors';
+import { Form } from 'assets/styles/common';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { MainButton } from 'styles/common/MainButton.styled';
+import { MainButton } from 'assets/styles/common';
 import { toast } from 'react-toastify';
-import { getContacts } from 'redux/contacts/selectors';
 
 export default function ContactForm() {
   const [name, setName] = useState('');

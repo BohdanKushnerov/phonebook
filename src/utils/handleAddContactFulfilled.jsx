@@ -2,7 +2,6 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const handleAddContactFulfilled = store => next => action => {
-  // console.log(action);
   if (action.type === 'auth/login/fulfilled') {
     toast.info(
       <span>

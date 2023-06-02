@@ -7,7 +7,7 @@ import ContactForm from 'components/ContactForm';
 import Filter from 'components/Filter';
 import ContactList from 'components/Contacts/ContactList';
 import ScrollTopButton from 'components/ScrollTop';
-import { PageContainer } from 'styles/common/PageContainer.styled';
+import { PageContainer } from 'assets/styles/common';
 
 export default function Phonebook() {
   const filterState = useSelector(getFilter);

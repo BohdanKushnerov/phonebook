@@ -3,14 +3,7 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-
-const initialState = {
-  user: { name: null, email: null },
-  token: null,
-  isLoggedIn: false,
-  isRefreshing: false,
-  error: null,
-};
+import { initialState } from './initialState';
 
 const handleAuthFulfilled = (state, action) => {
   state.user = action.payload.user;

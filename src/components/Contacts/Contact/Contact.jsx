@@ -2,13 +2,12 @@ import * as React from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteContacts } from 'redux/contacts/operations';
 import PropTypes from 'prop-types';
-
+import { DeleteBtn } from 'assets/styles/common';
 import Typography from '@mui/material/Typography';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import { DeleteBtn } from 'styles/common/DeleteBtn.styled';
 
 const Contact = ({ name, number, id }) => {
   const dispatch = useDispatch();

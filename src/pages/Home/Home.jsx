@@ -1,4 +1,4 @@
-import { PageContainer } from 'styles/common/PageContainer.styled';
+import { PageContainer } from 'assets/styles/common';
 
 export default function Home() {
   return (

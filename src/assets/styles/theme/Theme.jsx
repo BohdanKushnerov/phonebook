@@ -63,5 +63,3 @@ export function ToggleColorMode({ children }) {
     </ColorModeContext.Provider>
   );
 }
-
-// export default { ToggleColorMode, ColorModeContext };
