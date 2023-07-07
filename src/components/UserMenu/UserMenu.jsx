@@ -5,6 +5,7 @@ import { UserMenuBtn } from './UserMenu.styled';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
+  console.log('rerender UserManu');
 
   const name = useSelector(getAuthName);
 
@@ -15,9 +16,10 @@ const UserMenu = () => {
         flexDirection: 'column',
         gap: 4,
         alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
-      <p>
+      <p style={{ textAlign: 'center' }}>
         Welcome, <b>{name}</b>
       </p>
       <UserMenuBtn

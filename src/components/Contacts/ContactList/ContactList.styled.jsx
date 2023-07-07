@@ -6,5 +6,6 @@ export const ContactMUIList = styled(List)(() => ({
   flexDirection: 'column',
   gap: 8,
 
-  width: 350,
+  minWidth: 350,
+  maxWidth: 450,
 }));

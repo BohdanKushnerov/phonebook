@@ -11,7 +11,6 @@ const getVisibleContacts = (items, filterState) =>
 const ContactList = () => {
   const filterState = useSelector(getFilter);
   const { items, isLoading } = useSelector(getContacts);
-  console.log(isLoading);
 
   const visibleContacts = getVisibleContacts(items, filterState);
 

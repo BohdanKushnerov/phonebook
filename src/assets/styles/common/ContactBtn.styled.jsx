@@ -1,6 +1,6 @@
 import { styled, Button } from '@mui/material';
 
-export const DeleteBtn = styled(Button)(({ theme }) => ({
+export const ContactBtn = styled(Button)(({ theme }) => ({
   color:
     theme.palette.mode === 'dark'
       ? theme.palette.button.dark

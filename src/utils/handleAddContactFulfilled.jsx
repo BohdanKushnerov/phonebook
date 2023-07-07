@@ -27,6 +27,13 @@ export const handleAddContactFulfilled = store => next => action => {
       </span>
     );
   }
+  if (action.type === 'contacts/changeContact/fulfilled') {
+    toast.success(
+      <span>
+        Success change - <b>{action.payload.name}</b>
+      </span>
+    );
+  }
   if (action.type === 'contacts/deleteContacts/fulfilled') {
     toast.success(
       <span>

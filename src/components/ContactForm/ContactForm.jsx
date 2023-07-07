@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContacts } from 'redux/contacts/operations';
+import { addContacts, changeContact } from 'redux/contacts/operations';
 import { getContacts } from 'redux/contacts/selectors';
 import { Form } from 'assets/styles/common';
 import Box from '@mui/material/Box';
@@ -8,12 +8,20 @@ import TextField from '@mui/material/TextField';
 import { MainButton } from 'assets/styles/common';
 import { toast } from 'react-toastify';
 
-export default function ContactForm() {
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+export default function ContactForm({
+  name: initialName = '',
+  number: initialNumber = '',
+  isChangeContact = false,
+  id = '',
+  onClose = () => {},
+}) {
+  const [name, setName] = useState(initialName);
+  const [number, setNumber] = useState(initialNumber);
 
   const dispatch = useDispatch();
-  const { items } = useSelector(getContacts);
+  const { items, isLoading } = useSelector(getContacts);
+
+  console.log(isLoading);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -21,14 +29,21 @@ export default function ContactForm() {
       contact => contact.name.toLowerCase() === name.toLowerCase()
     );
 
-    isIncludes
-      ? toast.error(
+    if (isChangeContact) {
+      dispatch(changeContact({ id, name, number }));
+      onClose();
+    } else {
+      if (isIncludes) {
+        toast.error(
           <span>
             <b>{name}</b> is already in contacts
           </span>
-        )
-      : dispatch(addContacts({ name, number }));
-    reset();
+        );
+      } else {
+        dispatch(addContacts({ name, number }));
+      }
+      reset();
+    }
   };
 
   const handleChange = e => {
@@ -95,7 +110,7 @@ export default function ContactForm() {
       </Box>
 
       <MainButton variant="contained" type="submit">
-        Add contact
+        {isChangeContact ? 'Save' : 'Add contact'}
       </MainButton>
     </Form>
   );

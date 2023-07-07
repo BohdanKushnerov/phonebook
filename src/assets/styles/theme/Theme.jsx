@@ -29,6 +29,10 @@ export function ToggleColorMode({ children }) {
       createTheme({
         palette: {
           mode,
+          colors: {
+            dark: '#121212',
+            white: '#ffffff',
+          },
           primary: {
             main: '#70bd7c',
           },
