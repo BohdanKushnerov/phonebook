@@ -1,28 +1,32 @@
-import PropTypes from 'prop-types';
 import Contact from '../Contact';
 import { ContactMUIList } from './ContactList.styled';
+import { getContacts, getFilter } from 'redux/contacts/selectors';
+import { useSelector } from 'react-redux';
 
-const ContactList = ({ contacts, visibleContacts }) => {
-  return contacts ? (
-    <ContactMUIList>
-      {visibleContacts.map(({ id, name, number }) => {
-        return <Contact key={id} name={name} number={number} id={id} />;
-      })}
-    </ContactMUIList>
-  ) : (
-    <></>
+const getVisibleContacts = (items, filterState) =>
+  items.filter(({ name }) =>
+    name.toLowerCase().includes(filterState.toLowerCase())
   );
-};
 
-ContactList.propTypes = {
-  contacts: PropTypes.number.isRequired,
-  visibleContacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
+const ContactList = () => {
+  const filterState = useSelector(getFilter);
+  const { items, isLoading } = useSelector(getContacts);
+  console.log(isLoading);
+
+  const visibleContacts = getVisibleContacts(items, filterState);
+
+  return (
+    <>
+      {isLoading && <p>Loading contacts...</p>}
+      {items.length > 0 && (
+        <ContactMUIList>
+          {visibleContacts.map(({ id, name, number }) => {
+            return <Contact key={id} name={name} number={number} id={id} />;
+          })}
+        </ContactMUIList>
+      )}
+    </>
+  );
 };
 
 export default ContactList;

@@ -1,22 +1,27 @@
-import PropTypes from 'prop-types';
 import { TextField } from '@mui/material';
+import { getFilter } from 'redux/contacts/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeFilter } from 'redux/filter/filterSlice';
 
-const Filter = ({ filter, handleChangeFilter }) => {
+const Filter = () => {
+  const filterState = useSelector(getFilter);
+  const dispatch = useDispatch();
+
+  const handleChangeFilter = e => {
+    const { value } = e.currentTarget;
+    dispatch(changeFilter(value));
+  };
+
   return (
     <TextField
       id="outlined-controlled"
       type="text"
       placeholder="Find contacts by name"
       name="filter"
-      value={filter}
+      value={filterState}
       onChange={handleChangeFilter}
     />
   );
-};
-
-Filter.propTypes = {
-  handleChangeFilter: PropTypes.func.isRequired,
-  filter: PropTypes.string.isRequired,
 };
 
 export default Filter;
