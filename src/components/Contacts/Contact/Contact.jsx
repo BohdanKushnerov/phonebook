@@ -9,18 +9,24 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import { useState } from 'react';
-// import { Button } from '@mui/material';
-import { Modal } from 'components/Modal/Modal';
+import Modal from 'components/Modal';
 import { getContacts } from 'redux/contacts/selectors';
 
 const Contact = ({ name, number, id }) => {
   const [showModal, setShowModal] = useState(false);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const dispatch = useDispatch();
   const { isLoading } = useSelector(getContacts);
 
   const toggleModal = () => {
     setShowModal(prevState => !prevState);
+  };
+
+  const handleDelete = async () => {
+    setIsButtonDisabled(true);
+    await dispatch(deleteContacts(id));
+    setIsButtonDisabled(false);
   };
 
   return (
@@ -57,7 +63,7 @@ const Contact = ({ name, number, id }) => {
         type="button"
         variant="contained"
         size="small"
-        disabled={isLoading}
+        disabled={isLoading && isButtonDisabled}
         onClick={toggleModal}
       >
         Edit
@@ -66,8 +72,8 @@ const Contact = ({ name, number, id }) => {
         type="button"
         variant="contained"
         size="small"
-        disabled={isLoading}
-        onClick={() => dispatch(deleteContacts(id))}
+        disabled={isLoading && isButtonDisabled}
+        onClick={handleDelete}
       >
         Delete
       </ContactBtn>

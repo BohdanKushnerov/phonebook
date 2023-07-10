@@ -2,26 +2,25 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContacts, changeContact } from 'redux/contacts/operations';
 import { getContacts } from 'redux/contacts/selectors';
+import PropTypes from 'prop-types';
 import { Form } from 'assets/styles/common';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { MainButton } from 'assets/styles/common';
 import { toast } from 'react-toastify';
 
-export default function ContactForm({
+const ContactForm = ({
   name: initialName = '',
   number: initialNumber = '',
   isChangeContact = false,
   id = '',
   onClose = () => {},
-}) {
+}) => {
   const [name, setName] = useState(initialName);
   const [number, setNumber] = useState(initialNumber);
 
   const dispatch = useDispatch();
-  const { items, isLoading } = useSelector(getContacts);
-
-  console.log(isLoading);
+  const { items } = useSelector(getContacts);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -80,8 +79,9 @@ export default function ContactForm({
           value={name}
           onChange={handleChange}
           inputProps={{
-            pattern:
-              "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
+            // pattern:
+            //   "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
+            pattern: /^[a-zA-Zа-яА-Я]+([' -][a-zA-Zа-яА-Я]*)*$/,
             title:
               "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan",
             required: true,
@@ -99,8 +99,10 @@ export default function ContactForm({
           value={number}
           onChange={handleChange}
           inputProps={{
+            // pattern:
+            //   '\\+?\\d{0,3}[-\\s]?\\(?\\d{1,3}\\)?[-\\s]?\\d{1,4}[-\\s]?\\d{1,4}[-\\s]?\\d{1,9}',
             pattern:
-              '\\+?\\d{0,3}[-\\s]?\\(?\\d{1,3}\\)?[-\\s]?\\d{1,4}[-\\s]?\\d{1,4}[-\\s]?\\d{1,9}',
+              /^\+?\d{0,3}[-\s]?\(?\d{1,3}\)?[-\s]?\d{1,4}[-\s]?\d{1,4}[-\s]?\d{1,9}$/,
             title:
               'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +',
             required: true,
@@ -114,4 +116,14 @@ export default function ContactForm({
       </MainButton>
     </Form>
   );
-}
+};
+
+ContactForm.propTypes = {
+  name: PropTypes.string,
+  number: PropTypes.string,
+  isChangeContact: PropTypes.bool,
+  id: PropTypes.string,
+  onClose: PropTypes.func,
+};
+
+export default ContactForm;

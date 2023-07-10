@@ -5,7 +5,6 @@ import { UserMenuBtn } from './UserMenu.styled';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
-  console.log('rerender UserManu');
 
   const name = useSelector(getAuthName);
 

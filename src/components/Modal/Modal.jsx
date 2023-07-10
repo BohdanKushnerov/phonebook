@@ -1,30 +1,13 @@
-import ContactForm from 'components/ContactForm/ContactForm';
-import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-// import { useTheme } from '@mui/material/styles';
+import PropTypes from 'prop-types';
+import { useCloseModal } from 'hooks';
+import ContactForm from 'components/ContactForm';
 import { Overlay } from './Modal.styled';
-
-// import PropTypes from 'prop-types';
-// import { Overlay, ModalWindow } from './Modal.styled';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export function Modal({ id, name, number, onClose }) {
-  // const [first, setfirst] = useState(second);
-
-  // const theme = useTheme();
-
-  useEffect(() => {
-    const handleKeyDown = e => {
-      if (e.code === 'Escape') {
-        onClose();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onClose]);
+const Modal = ({ id, name, number, onClose }) => {
+  useCloseModal(onClose);
 
   const handleBackdropClick = e => {
     if (e.target === e.currentTarget) {
@@ -33,7 +16,7 @@ export function Modal({ id, name, number, onClose }) {
   };
 
   return createPortal(
-    <Overlay onClick={handleBackdropClick}>
+    <Overlay onMouseDown={handleBackdropClick}>
       <h1>Edit contact</h1>
       <ContactForm
         name={name}
@@ -45,10 +28,13 @@ export function Modal({ id, name, number, onClose }) {
     </Overlay>,
     modalRoot
   );
-}
+};
 
-// Modal.propTypes = {
-//   img: PropTypes.string.isRequired,
-//   alt: PropTypes.string.isRequired,
-//   onClose: PropTypes.func.isRequired,
-// };
+Modal.propTypes = {
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
+
+export default Modal;

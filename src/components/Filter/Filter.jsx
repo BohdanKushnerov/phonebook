@@ -1,9 +1,10 @@
+import React from 'react';
 import { TextField } from '@mui/material';
 import { getFilter } from 'redux/contacts/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFilter } from 'redux/filter/filterSlice';
 
-const Filter = () => {
+const Filter = React.memo(() => {
   const filterState = useSelector(getFilter);
   const dispatch = useDispatch();
 
@@ -22,6 +23,6 @@ const Filter = () => {
       onChange={handleChangeFilter}
     />
   );
-};
+});
 
 export default Filter;
